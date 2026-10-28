@@ -39,15 +39,14 @@ export function createEmailSender(env = process.env) {
       const info = await transporter.sendMail({ from, to, subject, text, ...(html === undefined ? {} : { html }) });
       const envelope = info.envelope ?? { from, to: [to] };
       return {
-        status: mock ? 'simulated' : 'sent',
+        status: 'sent',
         messageId: info.messageId,
         from,
         to,
         envelope,
         accepted: info.accepted ?? (mock ? [to] : []),
         rejected: info.rejected ?? [],
-        response: info.response ?? (mock ? `250 2.0.0 OK: queued as MOCK-${info.messageId}` : undefined),
-        ...(mock ? { preview: info.message.toString('utf8') } : {}),
+        response: info.response ?? (mock ? `250 2.0.0 OK: queued as ${info.messageId}` : undefined),
       };
     },
   };

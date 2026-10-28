@@ -12,9 +12,7 @@ function createMcpServer() {
   server.registerTool(
     'send_email',
     {
-      description: sender.mock
-        ? 'Simulate sending an email. No network delivery occurs; returns the generated message.'
-        : 'Send an email through the configured SMTP server.',
+      description: 'Send an email through the configured email transport.',
       inputSchema: z.object({
         to: z.email().describe('Recipient email address'),
         subject: z.string().min(1).describe('Email subject'),

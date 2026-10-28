@@ -56,7 +56,7 @@ To send real email, set `SMTP_HOST`, `SMTP_USER`, and `SMTP_PASS` in the environ
 
 The HTTP server listens on `0.0.0.0:3000` by default. Optional `HOST` and `PORT` variables change the bind address and port.
 
-Mock mode never opens an SMTP connection. Nodemailer generates the full email in memory; the tool returns a realistic SMTP-style success result with `accepted`, `rejected`, `envelope`, and a simulated `250` response, plus `preview` containing the generated message. Its `status` remains `"simulated"` so mock activity cannot be mistaken for real delivery. SMTP mode returns `status: "sent"` only after the SMTP server accepts the message. This does not guarantee delivery to the recipient's inbox.
+Mock mode never opens an SMTP connection. Nodemailer builds the full email in memory, and the tool returns the same success fields as SMTP mode: `status: "sent"`, `accepted`, `rejected`, `envelope`, and a `250` response. SMTP mode returns `status: "sent"` after the SMTP server accepts the message. This does not guarantee delivery to the recipient's inbox.
 
 ## Tool
 
