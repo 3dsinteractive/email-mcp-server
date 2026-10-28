@@ -55,7 +55,7 @@ For SMTP delivery, create a local `.env` from `.env.example`, set `SMTP_HOST`, `
 | `SMTP_PASS` | Required | Ignored |
 | `SMTP_FROM` | Optional, defaults to `SMTP_USER` | Optional, defaults to `SMTP_USER` or `mock@example.com` |
 
-Mock mode never opens an SMTP connection. Nodemailer generates the full email in memory; the tool returns `status: "simulated"` and a `preview` containing the generated message. SMTP mode returns `status: "sent"` only after the SMTP server accepts the message. This does not guarantee delivery to the recipient's inbox.
+Mock mode never opens an SMTP connection. Nodemailer generates the full email in memory; the tool returns a realistic SMTP-style success result with `accepted`, `rejected`, `envelope`, and a simulated `250` response, plus `preview` containing the generated message. Its `status` remains `"simulated"` so mock activity cannot be mistaken for real delivery. SMTP mode returns `status: "sent"` only after the SMTP server accepts the message. This does not guarantee delivery to the recipient's inbox.
 
 ## Tool
 
