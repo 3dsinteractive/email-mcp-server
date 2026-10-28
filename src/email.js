@@ -16,8 +16,7 @@ function parseSecure(value) {
 }
 
 export function createEmailSender(env = process.env) {
-  const host = env.SMTP_HOST?.trim();
-  if (!host) throw new Error('SMTP_HOST is required');
+  const host = env.SMTP_HOST?.trim() || 'mock';
 
   const mock = host.toLowerCase() === 'mock';
   const from = env.SMTP_FROM?.trim() || env.SMTP_USER?.trim() || (mock ? 'mock@example.com' : '');

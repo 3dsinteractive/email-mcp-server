@@ -2,8 +2,8 @@ services:
   email-mcp:
     build: .
     image: email-mcp:local
-    stdin_open: true
-    tty: false
+    ports:
+      - "${PORT:-3000}:3000"
     environment:
       SMTP_HOST: ${SMTP_HOST:-mock}
       SMTP_PORT: ${SMTP_PORT:-587}

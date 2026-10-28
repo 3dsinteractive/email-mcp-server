@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "MCP stdio server for SMTP email with a safe mock mode",
+  "description": "Streamable HTTP MCP server for SMTP email with a safe mock mode",
   "scripts": {
     "start": "node src/index.js",
     "test": "node --test"
@@ -12,6 +12,7 @@
     "node": ">=20"
   },
   "dependencies": {
+    "@modelcontextprotocol/node": "^2.1.2",
     "@modelcontextprotocol/server": "^2.4.0",
     "nodemailer": "^10.2.1",
     "zod": "^4.0.0"
