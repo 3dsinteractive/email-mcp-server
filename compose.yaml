@@ -1,0 +1,13 @@
+services:
+  email-mcp:
+    build: .
+    image: email-mcp:local
+    stdin_open: true
+    tty: false
+    environment:
+      SMTP_HOST: ${SMTP_HOST:-mock}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
